@@ -1,4 +1,4 @@
-module emojipicker
+module github.com/transacid/emojipicker
 
 go 1.17
 
