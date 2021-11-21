@@ -10,3 +10,7 @@ just hit `emojipicker` and start typing. select with hitting `Enter`. The emoji 
 
 ## motivation
 This is just a fun project for me to learn some go :wink:
+I'm making use of these libraries:
+* 	[atotto/clipboard](https://github.com/atotto/clipboard)
+*	[kenshaw/emoji](https://github.com/kenshaw/emoji)
+*	[ktr0731/go-fuzzyfinder](https://github.com/ktr0731/go-fuzzyfinder)
