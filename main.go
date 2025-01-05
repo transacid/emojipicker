@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/atotto/clipboard"
 	"github.com/kenshaw/emoji"
@@ -19,15 +20,21 @@ func main() {
 	idx, err := fuzzyfinder.Find(
 		gemoji,
 		func(i int) string {
-			return gemoji[i].Description
+			var list []string
+			list = append(list, gemoji[i].Emoji)
+			list = append(list, gemoji[i].Description)
+			list = append(list, gemoji[i].Aliases...)
+			list = append(list, gemoji[i].Tags...)
+			return strings.Join(list, ", ")
 		},
 		fuzzyfinder.WithPromptString("Emoji: "),
 		fuzzyfinder.WithPreviewWindow(func(i, w, h int) string {
 			if i == -1 {
 				return ""
 			}
-			return fmt.Sprintf("Emoji: %s\nAlias: %s\nDescription: %s",
+			return fmt.Sprintf("Emoji: %s\nTags: %s\nAlias: %s\nDescription: %s",
 				gemoji[i].Emoji,
+				gemoji[i].Tags,
 				gemoji[i].Aliases,
 				gemoji[i].Description)
 		}))
